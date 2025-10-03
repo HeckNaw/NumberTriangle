@@ -90,8 +90,19 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
-        return -1;
+        NumberTriangle current = this;
+
+        for (int i = 0; i < path.length(); i++) {
+            char direction = path.charAt(i);
+
+            if (direction == 'l') {
+                current = current.left;
+            } else if (direction == 'r') {
+                current = current.right;
+            }
+        }
+
+        return current.getRoot();
     }
 
     /** Read in the NumberTriangle structure from a file.
@@ -120,8 +131,13 @@ public class NumberTriangle {
         String line = br.readLine();
         while (line != null) {
 
-            // remove when done; this line is included so running starter code prints the contents of the file
-            System.out.println(line);
+            String[] numbers = line.trim().split("\\s+");
+            List<NumberTriangle> currentRow = new ArrayList<>();
+
+            for (String numStr : numbers) {
+                int value = Integer.parseInt(numStr);
+                currentRow.add(new NumberTriangle(value));
+            }
 
             String[] numbers = line.trim().split("\\s+");
             List<NumberTriangle> currentRow = new ArrayList<>();
