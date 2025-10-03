@@ -100,6 +100,9 @@ public class NumberTriangle {
             } else if (direction == 'r') {
                 current = current.right;
             }
+            if (current == null) {
+                throw new IllegalArgumentException("wrong path");
+            }
         }
 
         return current.getRoot();
