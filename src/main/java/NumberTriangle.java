@@ -139,6 +139,14 @@ public class NumberTriangle {
                 currentRow.add(new NumberTriangle(value));
             }
 
+            String[] numbers = line.trim().split("\\s+");
+            List<NumberTriangle> currentRow = new ArrayList<>();
+
+            for (String numStr : numbers) {
+                int value = Integer.parseInt(numStr);
+                currentRow.add(new NumberTriangle(value));
+            }
+
             rows.add(currentRow);
 
             //read the next line
